@@ -1,3 +1,6 @@
+# About 
+Develop and implement a system for predicting customer behavior in a consumer goods store using the analysis of purchase signals, identifying trends and increasing the efficiency of business operations. This will allow you to optimize inventory, formulate personalized offers, improve service efficiency and increase customer loyalty.
+
 # What needs:
 
 1. Collection and preparation of data - collect historical data about customer purchases (products, hour, amount, frequency, sales channels) and prepare them before analysis.

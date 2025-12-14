@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогнозування поведінки клієнтів</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1 class="header-title">
+            Прогнозування поведінки клієнтів<br>
+            у магазині будівельних матеріалів
+        </h1>
+        <p class="subtitle">
+            Завантажте дані про покупки, виконайте аналіз та отримайте прогноз повернення клієнтів.
+        </p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Завантаження даних</h2>
+        <p>Оберіть файл з історією покупок клієнтів (формат CSV).</p>
+
+        <form id="uploadForm">
+            <div class="form-row">
+                <label for="dataFile">Файл з даними:</label>
+                <input type="file" id="dataFile" name="dataFile" accept=".csv">
+            </div>
+
+            <div class="form-row">
+                <label for="period">Період аналізу:</label>
+                <select id="period" name="period">
+                    <option value="all">Весь файл (повний період)</option>
+                    <option value="30">Останні 30 днів</option>
+                    <option value="90">Останні 3 місяці</option>
+                    <option value="365">Останній рік</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Завантажити дані</button>
+            <div id="uploadStatus" class="status"></div>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Прогнозування поведінки клієнтів</h2>
+        <p>Після завантаження даних натисніть кнопку нижче, щоб виконати аналіз.</p>
+
+        <button id="runPredictionBtn" class="btn" disabled>Запустити прогноз</button>
+        <div id="predictionStatus" class="status"></div>
+    </section>
+
+</main>
+
+<div class="results-wide">
+    <div class="results-row">
+
+        <section class="card card-results">
+            <h2>Результати аналізу</h2>
+
+            <div id="summary" class="summary"></div>
+
+            <div class="table-controls">
+                <span>Сортування:</span>
+                <button class="btn-sort" id="tableSortProbDesc">Ймовірність ↓</button>
+                <button class="btn-sort" id="tableSortProbAsc">Ймовірність ↑</button>
+            </div>
+
+            <h3>Таблиця прогнозів</h3>
+
+            <div class="table-scroll">
+                <table id="predictionTable">
+                    <thead>
+                        <tr>
+                            <th>ID клієнта</th>
+                            <th>Ім’я клієнта</th>
+                            <th>Ймовірність повернення</th>
+                            <th>Рекомендований товар</th>
+                            <th>Коментар</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card card-chart">
+            <h2>Рiвень росподiлу клієнтів</h2>
+            <p class="chart-note">Ймовірність повернення для перших 20 клієнтів.</p>
+
+            <div class="chart-controls">
+                <span>Сортування:</span>
+                <button class="btn-sort" id="chartSortProbDesc">Ймовірність ↓</button>
+                <button class="btn-sort" id="chartSortProbAsc">Ймовірність ↑</button>
+            </div>
+
+            <div id="chartArea" class="chart-area chart-area-list"></div>
+        </section>
+
+        <section class="card card-chart">
+            <h2>Розподіл клієнтів за рівнем ймовірності</h2>
+            <p class="chart-note">Показує кількість клієнтів у категоріях низької, середньої та високої ймовірності.</p>
+
+            <div id="distributionChart" class="chart-area chart-area-distribution"></div>
+        </section>
+
+    </div>
+</div>
+</body>
+</html>

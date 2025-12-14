@@ -1,0 +1,8 @@
+<Dimension name="Store" foreignKey="store_id">
+  <Hierarchy hasAll="true" primaryKey="store_id">
+    <Table name="store"/>
+    <Level name="State" column="store_state"/>
+    <Level name="StoreType" column="store_type"/>
+    <Level name="StoreName" column="store_name" uniqueMembers="true"/>
+  </Hierarchy>
+</Dimension>
